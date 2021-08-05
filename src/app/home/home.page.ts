@@ -22,7 +22,7 @@ export class HomePage {
     { icon: 'card-outline', text: 'Cartão virtual' },
   ];
 
-  public slidesOptions: any = { slidesPerView: 3, freeMode: true }
+  public slidesOptions: any = { slidesPerView: 3, freeMode: true };
 
   public items: Array<any> = [
     { icon: 'help-circle-outline', text: 'Me ajuda' },
@@ -32,7 +32,7 @@ export class HomePage {
     { icon: 'phone-portrait-outline', text: 'Configurações do app' },
   ];
 
-  public initialStep: number = 0;
+  public initialStep = 0;
   private maxTranslate: number;
   private animation: Animation;
 
@@ -45,6 +45,7 @@ export class HomePage {
 
   }
 
+  // eslint-disable-next-line @angular-eslint/use-lifecycle-interface
   ngAfterViewInit() {
     this.createAnimation();
   }
@@ -61,13 +62,14 @@ export class HomePage {
     this.animation = this.animationCtrl.create()
       .addElement(this.blocks.nativeElement)
       .duration(300)
-      .fromTo('transform', 'translateY(0)', `translateY(${this.maxTranslate}px)`)
+      .fromTo('transform', 'translateY(0)', `translateY(${this.maxTranslate}px)`);
   }
 
   setBackgroundOpacity() {
-    this.renderer.setStyle(this.background.nativeElement, 'opacity', this.initialStep === 0 ? '0' : '1')
+    this.renderer.setStyle(this.background.nativeElement, 'opacity', this.initialStep === 0 ? '0' : '1');
   }
 
+  // eslint-disable-next-line @typescript-eslint/ban-types
   fixedBlocks(): Boolean {
     return this.initialStep === this.maxTranslate;
   }
